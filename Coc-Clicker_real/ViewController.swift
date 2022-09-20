@@ -20,11 +20,41 @@ class ViewController: UIViewController {
     @IBOutlet weak var Clicker: UILabel!
     
     var Doug:Int = 0
-    
-    
+    var shopbought = false
+    var timer: Timer?
+    var shop:Int = 0
     
     let imageView = UIImageView(frame: CGRect(x: -65, y: -40, width: 350, height: 350))
     
+    
+    @IBOutlet weak var cpscounter: UILabel!
+    
+    
+    
+    
+
+    func Cps () {
+        
+        self.timer =
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {
+            
+            timer in self.Doug += 1
+            
+            self.Clicker.text = "Total Clicks:  \(self.Doug)"
+            
+        }
+    }
+    func Arch () {
+        
+        self.timer =
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {
+            
+            timer in self.Doug += 100
+            
+            self.Clicker.text = "Total Clicks:  \(self.Doug)"
+            
+        }
+    }
     
     
     
@@ -39,38 +69,80 @@ class ViewController: UIViewController {
         
         
     }
-    
-    @IBAction func ButtonClicker(_ sender: Any) {
-        Doug += 1
-        Clicker.text = "Total Clicks: \(Doug)"
-        if Doug > 99
-        { Doug += 1}
-        
-        if Doug > 249
-        { Doug += 2}
-        
+//    func Cps () {
+//
+//        self.timer =
+//        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {
+//
+//            timer in self.Doug += 1
+//
+//            self.Clicker.text = "Total Clicks:  \(self.Doug)"
+//
+//    }
+//    func Arch () {
+//
+//        self.timer =
+//        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {
+//
+//            timer in self.Doug += 100
+//
+//            self.Clicker.text = "Total Clicks:  \(self.Doug)"
+//
+//        }
+//
+//    }
+       @IBAction func ButtonClicker(_ sender: Any) {
+            Doug += 1
+            Clicker.text = "Total Clicks: \(Doug)"
+            if Doug > 99
+            { Doug += 1}
+            
+            if Doug > 249
+            { Doug += 2}
+            
+            
+            
         }
-    
-    @IBAction func Points(_ sender: Any) {
         
-       Doug += 999
+        
+        
+        
+        
+        @IBAction func generator(_ sender: Any) {
+            
+            if Doug > 9{
+                Doug -= 9
+                shop += 1
+                cpscounter.text = "Cps: \(shop)"
+                // if shopbought == false{
+                Cps()//}
+                // shopbought = true
+                
+            }
+            
+            
+        }
+        
+        
+       @IBAction func Generate(_ sender: Any) {
+            
+            if Doug > 99{
+                Doug -= 99
+                shop += 100
+                cpscounter.text = "Cps: \(shop)"
+                //  if shopbought == false{
+                Arch()//}
+                // shopbought = true
+                
+            }
+            
+            
+            
+            
+        }
+        
+        
+        
         
     }
-    
-    
-    @IBAction func Zero(_ sender: Any) {
-        
-        Doug = -1
-        
-    }
-    
-    @IBAction func VeryBad(_ sender: Any) {
-         Doug = -101
-        
-    }
-    
-    
-}
-
-
 
